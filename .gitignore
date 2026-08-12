@@ -1,0 +1,5 @@
+node_modules
+dist
+dist.mcaddon
+.mbler
+cache

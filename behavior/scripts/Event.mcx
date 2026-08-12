@@ -1,0 +1,10 @@
+<Event @after>
+  itemCompleteUse = itemUse
+</Event>
+<script lang="ts">
+import { ItemCompleteUseAfterEvent } from "@minecraft/server";
+
+export function itemUse(event: ItemCompleteUseAfterEvent) {
+  console.log(event.itemStack.typeId)
+}
+</script>

@@ -1,0 +1,4 @@
+<script lang="ts">
+import event from "./Event.mcx";
+event.subscribe();
+</script>
