@@ -19,8 +19,11 @@ YeShengGouNai.setFood({
 })
 YeShengGouNai.setUseModifiers({
   use_duration: 2,
-  movement_modifier: 1
+  movement_modifier: 1,
+  start_sound: "eat"
 });
+YeShengGouNai.setUseAnimation("eat")
 YeShengGouNai.setMaxStackSize(1);
 YeShengGouNai.setGlint(true)
+YeShengGouNai.setMenuCategory("equipment")
 </script>

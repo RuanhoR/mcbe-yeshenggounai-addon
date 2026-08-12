@@ -1,10 +1,62 @@
 <Event @after>
   itemCompleteUse = itemUse
+  playerInteractWithEntity = o
+  worldLoad = startLoop
 </Event>
 <script lang="ts">
-import { ItemCompleteUseAfterEvent } from "@minecraft/server";
+import { CommandPermissionLevel, EntityComponentTypes, EquipmentSlot, ItemCompleteUseAfterEvent, ItemStack, PlayerInteractWithEntityAfterEvent, system, world } from "@minecraft/server";
 
 export function itemUse(event: ItemCompleteUseAfterEvent) {
-  console.log(event.itemStack.typeId)
+  event.source.setDynamicProperty("_eat", true)
+}
+export function o(event: PlayerInteractWithEntityAfterEvent) {
+  console.log("Event: ", event.itemStack?.typeId, event.target.typeId)
+  if (event.itemStack?.typeId !== "minecraft:bucket") return;
+  if (event.target.typeId !== "minecraft:wolf") return;
+  if (event.target.hasComponent("minecraft:is_tamed")) return;
+
+  const player = event.player;
+  const equippable = player.getComponent(EntityComponentTypes.Equippable);
+  const mainhand = equippable?.getEquipment(EquipmentSlot.Mainhand);
+  if (!mainhand || mainhand.typeId !== "minecraft:bucket") return;
+
+  const rest = mainhand.amount - 1;
+  equippable?.setEquipment(EquipmentSlot.Mainhand, rest > 0 ? new ItemStack("minecraft:bucket", rest) : undefined);
+
+  const inventory = player.getComponent(EntityComponentTypes.Inventory)?.container;
+  const leftover = inventory?.addItem(new ItemStack("gounai:yesheng"));
+  if (leftover) {
+    const location = event.target.location;
+    event.target.dimension.spawnItem(leftover, { x: location.x, y: location.y + 0.5, z: location.z });
+  }
+}
+export function startLoop() {
+  system.runInterval(() => {
+    for (const player of world.getPlayers()) {
+      if (!player.isValid) return;
+      if (player.getDynamicProperty("_eat")) {
+        player.addEffect("instant_health", 20000000, {
+          amplifier: 255,
+          showParticles: false
+        });
+        player.addEffect("regeneration", 20000000, {
+          amplifier: 255,
+          showParticles: false
+        });
+        player.addEffect("absorption", 20000000, {
+          amplifier: 255,
+          showParticles: false
+        });
+        player.addEffect("resistance", 20000000, {
+          amplifier: 255,
+          showParticles: false
+        });
+        player.addEffect("health_boost", 20000000, {
+          amplifier: 255,
+          showParticles: false
+        })
+      }
+    }
+  }, 10)
 }
 </script>
