@@ -10,7 +10,6 @@ export function itemUse(event: ItemCompleteUseAfterEvent) {
   event.source.setDynamicProperty("_eat", true)
 }
 export function o(event: PlayerInteractWithEntityAfterEvent) {
-  console.log("Event: ", event.itemStack?.typeId, event.target.typeId)
   if (event.itemStack?.typeId !== "minecraft:bucket") return;
   if (event.target.typeId !== "minecraft:wolf") return;
   if (event.target.hasComponent("minecraft:is_tamed")) return;
