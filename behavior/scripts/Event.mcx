@@ -5,9 +5,52 @@
 </Event>
 <script lang="ts">
 import { CommandPermissionLevel, EntityComponentTypes, EquipmentSlot, ItemCompleteUseAfterEvent, ItemStack, PlayerInteractWithEntityAfterEvent, system, world } from "@minecraft/server";
+import type { Player } from "@minecraft/server";
 
 export function itemUse(event: ItemCompleteUseAfterEvent) {
-  event.source.setDynamicProperty("_eat", true)
+  event.source.setDynamicProperty("_eat", true);
+  awaken(event.source);
+}
+
+function awaken(player: Player) {
+  player.playSound("random.totem");
+  system.runTimeout(() => {
+    if (player.isValid) player.playSound("random.levelup");
+  }, 12);
+
+  player.dimension.spawnParticle("minecraft:huge_explosion_emitter", player.location);
+
+  let t = 0;
+  const spiralId = system.runInterval(() => {
+    if (!player.isValid || t >= 48) {
+      system.clearRun(spiralId);
+      return;
+    }
+    const angle = t * (Math.PI / 7);
+    const radius = 1.8 * (1 - t / 70);
+    player.dimension.spawnParticle(
+      t % 5 === 0 ? "minecraft:heart_particle" : "minecraft:endrod",
+      {
+        x: player.location.x + Math.cos(angle) * radius,
+        y: player.location.y + 0.2 + t * 0.08,
+        z: player.location.z + Math.sin(angle) * radius,
+      }
+    );
+    t++;
+  });
+
+  const screen = player.onScreenDisplay;
+  screen.setTitle("§l§6野生狗奶", {
+    subtitle: "§e§o狗奶之力觉醒 · 祝福永随",
+    fadeInDuration: 2,
+    stayDuration: 70,
+    fadeOutDuration: 10,
+  });
+  screen.setActionBar("§d❤ 你获得了永恒的祝福 ❤");
+
+  try {
+    player.runCommand("camerashake add @s 0.25 5 positional");
+  } catch {}
 }
 export function o(event: PlayerInteractWithEntityAfterEvent) {
   if (event.itemStack?.typeId !== "minecraft:bucket") return;
@@ -28,34 +71,58 @@ export function o(event: PlayerInteractWithEntityAfterEvent) {
     const location = event.target.location;
     event.target.dimension.spawnItem(leftover, { x: location.x, y: location.y + 0.5, z: location.z });
   }
+
+  player.playSound("random.orb");
+  player.onScreenDisplay.setActionBar("§b✦ 成功挤出了§l§6野生狗奶§r§b ✦");
+  const wolfLoc = event.target.location;
+  for (let i = 0; i < 5; i++) {
+    event.target.dimension.spawnParticle("minecraft:heart_particle", {
+      x: wolfLoc.x + Math.random() * 1.2 - 0.6,
+      y: wolfLoc.y + 0.8 + Math.random() * 0.4,
+      z: wolfLoc.z + Math.random() * 1.2 - 0.6,
+    });
+  }
 }
 export function startLoop() {
   system.runInterval(() => {
+    const tick = system.currentTick;
     for (const player of world.getPlayers()) {
-      if (!player.isValid) return;
-      if (player.getDynamicProperty("_eat")) {
-        player.addEffect("instant_health", 20000000, {
-          amplifier: 255,
-          showParticles: false
-        });
-        player.addEffect("regeneration", 20000000, {
-          amplifier: 255,
-          showParticles: false
-        });
-        player.addEffect("absorption", 20000000, {
-          amplifier: 255,
-          showParticles: false
-        });
-        player.addEffect("resistance", 20000000, {
-          amplifier: 255,
-          showParticles: false
-        });
-        player.addEffect("health_boost", 20000000, {
-          amplifier: 255,
-          showParticles: false
-        })
-      }
+      if (!player.isValid) continue;
+      if (!player.getDynamicProperty("_eat")) continue;
+
+      player.addEffect("instant_health", 20000000, {
+        amplifier: 255,
+        showParticles: false
+      });
+      player.addEffect("regeneration", 20000000, {
+        amplifier: 255,
+        showParticles: false
+      });
+      player.addEffect("absorption", 20000000, {
+        amplifier: 255,
+        showParticles: false
+      });
+      player.addEffect("resistance", 20000000, {
+        amplifier: 255,
+        showParticles: false
+      });
+      player.addEffect("health_boost", 20000000, {
+        amplifier: 255,
+        showParticles: false
+      });
+
+      const angle = tick * 0.12;
+      const radius = 1.2;
+      const loc = {
+        x: player.location.x + Math.cos(angle) * radius,
+        y: player.location.y + 0.1,
+        z: player.location.z + Math.sin(angle) * radius,
+      };
+      player.dimension.spawnParticle(
+        tick % 40 === 0 ? "minecraft:heart_particle" : "minecraft:endrod",
+        loc
+      );
     }
-  }, 10)
+  }, 5)
 }
 </script>
