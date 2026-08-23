@@ -3,4 +3,4 @@ minimumReleaseAgeExclude:
   - '@mbler/mcx-component@0.0.1-rc.1'
   - '@mbler/mcx-types@0.0.4-rc.7'
   - mbler@0.2.13
-  - 'mbler@0.2.14-rc.0'
+  - 'mbler@0.2.14-rc.1'
