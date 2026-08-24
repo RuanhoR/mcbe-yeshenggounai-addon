@@ -15,7 +15,7 @@
   "type": "module",
   "dependencies": {
     "@minecraft/server": "2.10.0-beta.1.26.40-preview.20",
-    "@mbler/mcx": "0.0.5"
+    "@mbler/mcx": "0.0.6"
   },
   "devDependencies": {
     "cross-env": "^10.1.0",
