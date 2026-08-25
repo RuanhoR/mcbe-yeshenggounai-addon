@@ -28,8 +28,8 @@ importers:
         specifier: ^10.1.0
         version: 10.1.0
       mbler:
-        specifier: 0.2.14-rc.4
-        version: 0.2.14-rc.4(@mbler/mcx-core@0.1.3-rc.13(@minecraft/server-ui@2.2.0-beta.1.26.30-preview.30(@minecraft/common@1.3.0)(@minecraft/server@2.10.0-beta.1.26.40-preview.20(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.40)))(@minecraft/server@2.10.0-beta.1.26.40-preview.20(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.40)))(@volar/typescript@2.4.28)(rolldown@1.2.3)(typescript@5.9.3)
+        specifier: 0.2.14-rc.6
+        version: 0.2.14-rc.6(@mbler/mcx-core@0.1.3-rc.13(@minecraft/server-ui@2.2.0-beta.1.26.30-preview.30(@minecraft/common@1.3.0)(@minecraft/server@2.10.0-beta.1.26.40-preview.20(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.40)))(@minecraft/server@2.10.0-beta.1.26.40-preview.20(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.40)))(@volar/typescript@2.4.28)(rolldown@1.2.3)(typescript@5.9.3)
       mcx-tsc:
         specifier: ^0.0.2-rc.1
         version: 0.0.2-rc.1(@minecraft/common@1.3.0)(@minecraft/server-ui@2.2.0-beta.1.26.30-preview.30(@minecraft/common@1.3.0)(@minecraft/server@2.10.0-beta.1.26.40-preview.20(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.40)))(@minecraft/server@2.10.0-beta.1.26.40-preview.20(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.40))(@minecraft/vanilla-data@1.26.40)(@volar/language-service@2.4.28)(rolldown@1.2.3)(rollup@4.59.0)(typescript@5.9.3)
@@ -631,8 +631,8 @@ packages:
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
 
-  mbler@0.2.14-rc.4:
-    resolution: {integrity: sha512-qQxdvhtOJZQcz31nTU9g2nAhX+uJjxdYJhK1tm491cOPkotB6sV1Au3RTPo8uOOvxjuGJaY2svMkR0bHw+854A==}
+  mbler@0.2.14-rc.6:
+    resolution: {integrity: sha512-lkwZHkfGtSt71SLeSJks0zrmeILyLH/BDE2n/6Qae1uT4T0kvZ2ZNGT7A1cgKzZB8tOs5Xa318HBnIDaaLfATQ==}
     engines: {node: '>=20.0.0'}
     hasBin: true
     peerDependencies:
@@ -1296,7 +1296,7 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  mbler@0.2.14-rc.4(@mbler/mcx-core@0.1.3-rc.13(@minecraft/server-ui@2.2.0-beta.1.26.30-preview.30(@minecraft/common@1.3.0)(@minecraft/server@2.10.0-beta.1.26.40-preview.20(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.40)))(@minecraft/server@2.10.0-beta.1.26.40-preview.20(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.40)))(@volar/typescript@2.4.28)(rolldown@1.2.3)(typescript@5.9.3):
+  mbler@0.2.14-rc.6(@mbler/mcx-core@0.1.3-rc.13(@minecraft/server-ui@2.2.0-beta.1.26.30-preview.30(@minecraft/common@1.3.0)(@minecraft/server@2.10.0-beta.1.26.40-preview.20(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.40)))(@minecraft/server@2.10.0-beta.1.26.40-preview.20(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.40)))(@volar/typescript@2.4.28)(rolldown@1.2.3)(typescript@5.9.3):
     dependencies:
       '@mbler/mcx-core': 0.1.3-rc.13(@minecraft/server-ui@2.2.0-beta.1.26.30-preview.30(@minecraft/common@1.3.0)(@minecraft/server@2.10.0-beta.1.26.40-preview.20(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.40)))(@minecraft/server@2.10.0-beta.1.26.40-preview.20(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.40))
       adm-zip: 0.6.0
