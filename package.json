@@ -21,7 +21,7 @@
     "cross-env": "^10.1.0",
     "mbler": "0.3.1-dev.1",
     "@mbler/mcx-types": "0.0.4-rc.8",
-    "mcx-tsc": "^0.0.2-rc.1",
+    "mcx-tsc": "^0.0.2-rc.5",
     "rolldown": "^1.1.0",
     "@mbler/mcx-component": "0.0.4-rc.1",
     "@mbler/mcx-core": "1.1.5-dev.1"
