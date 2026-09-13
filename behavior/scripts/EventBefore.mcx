@@ -1,0 +1,12 @@
+<Event @before>
+  entityHurt = hurt
+</Event>
+<script lang="ts">
+import { EntityHurtBeforeEvent } from "@minecraft/server";
+
+export function hurt(event: EntityHurtBeforeEvent) {
+  if (event.hurtEntity.getDynamicProperty("_eat")) {
+    event.cancel = true;
+  }
+}
+</script>

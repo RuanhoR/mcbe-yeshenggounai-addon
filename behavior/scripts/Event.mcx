@@ -2,6 +2,7 @@
   itemCompleteUse = itemUse
   playerInteractWithEntity = o
   worldLoad = startLoop
+  McxExtendsBy = ./EventBefore.mcx
 </Event>
 <script lang="ts">
 import { CommandPermissionLevel, EntityComponentTypes, EquipmentSlot, ItemCompleteUseAfterEvent, ItemStack, PlayerInteractWithEntityAfterEvent, system, world } from "@minecraft/server";
@@ -50,7 +51,7 @@ function awaken(player: Player) {
 
   try {
     player.runCommand("camerashake add @s 0.25 5 positional");
-  } catch {}
+  } catch { }
 }
 export function o(event: PlayerInteractWithEntityAfterEvent) {
   if (event.itemStack?.typeId !== "minecraft:bucket") return;
