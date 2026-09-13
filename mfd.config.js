@@ -9,6 +9,10 @@ export default defineConfig({
 
 "野生狗奶..." —— Minecraft 基岩版模组，基于 [mbler](https://github.com/RuanhoR/mbler) 与 mcx 构建。
 
+## 仓库
+
+GitHub: [mcbe-yeshenggounai-addon](https://github.com/RuanhoR/mcbe-yeshenggounai-addon)
+
 ## 安装
 
 选择与你的 Minecraft 版本匹配的 \`dist.mcaddon\` 下载后导入游戏即可。
@@ -16,6 +20,10 @@ export default defineConfig({
     en: `# YeShengGouNai
 
 A "wild dog milk..." Minecraft Bedrock Edition addon, built with [mbler](https://github.com/RuanhoR/mbler) and mcx.
+
+## Repository
+
+GitHub: [mcbe-yeshenggounai-addon](https://github.com/RuanhoR/mcbe-yeshenggounai-addon)
 
 ## Install
 
