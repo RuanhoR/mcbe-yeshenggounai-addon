@@ -1,5 +1,8 @@
 # 野生狗奶 (YeShengGouNai)
 
+> [!NOTE]
+> 本项目已迁移至 [mcx-example-addon](https://github.com/RuanhoR/mcx-example-addon) monorepo 统一管理。本仓库保留作历史存档。
+
 The `dist.mcaddon` is a MC addon base on [mbler](https://github.com/RuanhoR/mbler) and mcx.
 
 Download page: <https://addon.wei.qzz.io/yeshenggounai/>
